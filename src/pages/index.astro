@@ -2,17 +2,38 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import SubstackFeed from '../components/SubstackFeed.astro';
+import SubstackEmbed from '../components/SubstackEmbed.astro';
+import { getSubstackPosts } from '../utils/substack';
+
+const latestPosts = await getSubstackPosts(6);
 ---
 
 <BaseLayout title="Home">
   <Header />
-  <main class="max-w-6xl mx-auto px-6 py-16">
-    <section class="text-center py-20">
-      <h1 class="text-5xl font-bold mb-4 tracking-tight">Cian O'Leary</h1>
-      <p class="text-xl text-text-secondary font-mono">AI Infrastructure Engineer</p>
-      <p class="mt-6 text-text-secondary max-w-xl mx-auto">
-        Building systems that scale. Writing about the future of AI infrastructure.
-      </p>
+  <main>
+    <section class="max-w-6xl mx-auto px-6">
+      <Hero />
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-16">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold">Latest Writing</h2>
+        <a href="/blog" class="text-accent hover:text-accent-hover font-mono text-sm transition-colors">
+          View all →
+        </a>
+      </div>
+      <SubstackFeed posts={latestPosts} />
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold mb-4">Connect</h2>
+        <SocialLinks />
+      </div>
+      <SubstackEmbed />
     </section>
   </main>
   <Footer />

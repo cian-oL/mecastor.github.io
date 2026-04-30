@@ -1,0 +1,28 @@
+---
+import BlogCard from './BlogCard.astro';
+import type { SubstackPost } from '../utils/substack';
+
+export interface Props {
+  posts: SubstackPost[];
+}
+
+const { posts } = Astro.props;
+---
+
+{posts.length > 0 ? (
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {posts.map((post) => (
+      <BlogCard
+        title={post.title}
+        excerpt={post.excerpt}
+        date={post.date}
+        link={post.link}
+        tag={post.categories[0]}
+      />
+    ))}
+  </div>
+) : (
+  <div class="text-center py-12 text-text-secondary">
+    <p>No posts available. Check back soon!</p>
+  </div>
+)}

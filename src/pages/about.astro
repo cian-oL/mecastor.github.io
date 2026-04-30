@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+---
+
+<BaseLayout title="About" description="About Cian O'Leary - AI Infrastructure Engineer">
+  <Header />
+  <main class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold mb-8">About</h1>
+
+    <div class="space-y-6 text-lg">
+      <p class="text-text-secondary">
+        I'm an AI Infrastructure Engineer focused on building systems that scale. My work sits at the intersection of distributed systems, machine learning operations, and developer tooling — the critical foundation that enables AI products to perform reliably in production.
+      </p>
+
+      <p class="text-text-secondary">
+        With a background in software engineering and a growing interest in the infrastructure layer of AI systems, I'm working toward positioning myself in the AI infrastructure space. I write about what I'm learning, building, and thinking about in this rapidly evolving field.
+      </p>
+
+      <p class="text-text-secondary">
+        When I'm not building, you'll find me writing about systems design, exploring new tools and frameworks, and thinking about how to make AI infrastructure more accessible and robust.
+      </p>
+    </div>
+
+    <hr class="border-border my-12" />
+
+    <section>
+      <h2 class="text-2xl font-bold mb-6">What I Believe</h2>
+      <div class="space-y-4 text-text-secondary">
+        <p>
+          <strong class="text-text-primary">Infrastructure is foundational.</strong> The best ML models are worthless without the systems to deploy, scale, and maintain them. I'm focused on the unsexy but critical work that makes AI products actually work.
+        </p>
+        <p>
+          <strong class="text-text-primary">Simplicity over cleverness.</strong> Distributed systems are complex enough without adding unnecessary layers. I prefer clear, maintainable solutions over clever ones that nobody else can understand.
+        </p>
+        <p>
+          <strong class="text-text-primary">Documentation matters.</strong> Infrastructure that's not documented doesn't exist. The real test of understanding is whether you can explain it clearly.
+        </p>
+      </div>
+    </section>
+
+    <hr class="border-border my-12" />
+
+    <section class="text-center">
+      <h2 class="text-2xl font-bold mb-6">Connect</h2>
+      <SocialLinks />
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

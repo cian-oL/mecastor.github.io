@@ -1,0 +1,39 @@
+---
+export interface Props {
+  title: string;
+  excerpt: string;
+  date: string;
+  link: string;
+  tag?: string;
+}
+
+const { title, excerpt, date, link, tag } = Astro.props;
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+---
+
+<article class="bg-surface border border-border rounded-lg p-6 hover:border-accent transition-colors group">
+  {tag && (
+    <span class="text-xs font-mono uppercase tracking-wider text-accent mb-3 block">{tag}</span>
+  )}
+  <h3 class="text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
+    <a href={link} target="_blank" rel="noopener noreferrer">{title}</a>
+  </h3>
+  <p class="text-text-secondary text-sm mb-4 line-clamp-3">{excerpt}</p>
+  <div class="flex items-center justify-between">
+    <time class="text-xs font-mono text-text-secondary" datetime={date}>
+      {formatDate(date)}
+    </time>
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-sm font-mono text-accent hover:text-accent-hover transition-colors"
+    >
+      Read more →
+    </a>
+  </div>
+</article>

@@ -1,0 +1,23 @@
+---
+export interface Props {
+  name?: string;
+  tagline?: string;
+  description?: string;
+}
+
+const {
+  name = "Cian O'Leary",
+  tagline = "AI Infrastructure Engineer",
+  description = "Building systems that scale. Writing about the future of AI infrastructure."
+} = Astro.props;
+---
+
+<section class="text-center py-20 md:py-32">
+  <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+    {name}
+  </h1>
+  <p class="text-xl md:text-2xl text-accent font-mono mb-6">{tagline}</p>
+  <p class="text-text-secondary max-w-xl mx-auto text-lg">
+    {description}
+  </p>
+</section>

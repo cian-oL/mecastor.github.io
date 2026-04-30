@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SubstackFeed from '../components/SubstackFeed.astro';
+import SubstackEmbed from '../components/SubstackEmbed.astro';
+import { getSubstackPosts } from '../utils/substack';
+
+const allPosts = await getSubstackPosts(20);
+---
+
+<BaseLayout title="Blog" description="Writing on AI infrastructure, systems, and the future of AI.">
+  <Header />
+  <main class="max-w-6xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold mb-4">Blog</h1>
+    <p class="text-text-secondary text-lg mb-12 max-w-2xl">
+      Writing about AI infrastructure, distributed systems, and the practical challenges of building AI products at scale.
+    </p>
+
+    <SubstackFeed posts={allPosts} />
+
+    <div class="mt-16">
+      <SubstackEmbed />
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
