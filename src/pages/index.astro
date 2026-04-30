@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Home">
+  <Header />
+  <main class="max-w-6xl mx-auto px-6 py-16">
+    <section class="text-center py-20">
+      <h1 class="text-5xl font-bold mb-4 tracking-tight">Cian O'Leary</h1>
+      <p class="text-xl text-text-secondary font-mono">AI Infrastructure Engineer</p>
+      <p class="mt-6 text-text-secondary max-w-xl mx-auto">
+        Building systems that scale. Writing about the future of AI infrastructure.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
