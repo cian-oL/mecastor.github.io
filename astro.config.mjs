@@ -1,14 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://olearylab.com',
-  integrations: [tailwind()],
-  build: {
-    assets: 'assets',
-  },
+  integrations: [],
   vite: {
-    assetsInclude: ['**/*.astro'],
+    plugins: [tailwindcss()],
   },
 });

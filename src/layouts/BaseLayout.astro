@@ -1,10 +1,20 @@
 ---
+import '../styles/global.css';
+
 export interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
 }
 
-const { title, description = 'AI Infrastructure Engineer. Writing about systems, scale, and the future of AI.' } = Astro.props;
+const {
+  title,
+  description = 'AI Infrastructure Engineer. Writing about systems, scale, and the future of AI.',
+  ogImage = '/og-image.png',
+} = Astro.props;
+
+const siteUrl = 'https://olearylab.com';
+const fullTitle = `${title} | O'Leary Lab`;
 ---
 
 <!doctype html>
@@ -14,19 +24,34 @@ const { title, description = 'AI Infrastructure Engineer. Writing about systems,
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="author" content="Cian O'Leary" />
+    <meta name="robots" content="index, follow" />
+
+    <title>{fullTitle}</title>
+
+    <link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="O'Leary Lab RSS" href="/rss.xml" />
+    <link rel="manifest" href="/manifest.json" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <title>{title} | O'Leary Lab</title>
+
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={`${siteUrl}${Astro.url.pathname}`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="O'Leary Lab" />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mecastor" />
+    <meta name="twitter:creator" content="@mecastor" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
   </head>
   <body class="bg-background text-text-primary font-sans antialiased">
     <slot />
   </body>
 </html>
-
-<style is:global>
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-</style>

@@ -1,9 +1,8 @@
 ---
 import BlogCard from './BlogCard.astro';
-import type { SubstackPost } from '../utils/substack';
 
 export interface Props {
-  posts: SubstackPost[];
+  posts: any[];
 }
 
 const { posts } = Astro.props;

@@ -1,0 +1,16 @@
+{
+  "name": "O'Leary Lab",
+  "short_name": "O'Leary Lab",
+  "description": "AI Infrastructure Engineer. Writing about systems, scale, and the future of AI.",
+  "start_url": "https://olearylab.com",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

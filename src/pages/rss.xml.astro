@@ -1,0 +1,31 @@
+---
+import { getSubstackPosts } from '../utils/substack';
+
+const siteUrl = 'https://olearylab.com';
+const posts = await getSubstackPosts(20);
+
+const rssItems = posts.map((post) => `
+  <item>
+    <title><![CDATA[${post.title}]]></title>
+    <link>${post.link}</link>
+    <guid>${post.link}</guid>
+    <pubDate>${new Date(post.date).toUTCString()}</pubDate>
+    <description><![CDATA[${post.excerpt}]]></description>
+  </item>
+`).join('\n    ');
+
+const rssXml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>O'Leary Lab</title>
+    <link>${siteUrl}</link>
+    <description>AI Infrastructure Engineer. Writing about systems, scale, and the future of AI.</description>
+    <language>en-us</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
+    ${rssItems}
+  </channel>
+</rss>`;
+---
+
+<Fragment set:html={rssXml} />
